@@ -10,6 +10,7 @@ export const TOR_DEPLOY0 = 'e1'; // default deployment if unspecified (should al
 export const TOR_DEPLOYS = {
 	'e4': '0x7CE6Cf740075B5AF6b1681d67136B84431B43AbD', // Mainnet (v4)
 	's4': '0x3c187BAb6dC2C94790d4dA5308672e6F799DcEC3', // Sepolia (v4)
+	's5': '0x4E7BE27c494a57b4D84eb138F03bE9f43A03604E', // Sepolia
 
 	// old
 	 'g': '0x9b87849Aa21889343b6fB1E146f9F734ecFA9982', // Goerli
@@ -60,10 +61,10 @@ if (is_enabled(process.env.DEMO)) {
 	ROUTERS.push(...(await import("./routers/3dns.js")).default);
 }
 
-// dynamically load any underscored routers
-// note: these are .gitignore'd
-const dir = new URL('./routers/', import.meta.url);
-for (let name of await readdir(dir)) {
+// dynamically load any custom routers
+// note: this directory is gitignored
+const dir = new URL('./custom/', import.meta.url);
+for (let name of await readdir(dir).catch(() => [])) {
 	if (/^_.*js$/.test(name)) {
 		ROUTERS.push((await import(new URL(name, dir))).default);
 	}
