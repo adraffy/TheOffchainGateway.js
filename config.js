@@ -65,7 +65,7 @@ if (is_enabled(process.env.DEMO)) {
 // note: this directory is gitignored
 const dir = new URL('./custom/', import.meta.url);
 for (let name of await readdir(dir).catch(() => [])) {
-	if (/^_.*js$/.test(name)) {
+	if (/.*js$/.test(name)) {
 		ROUTERS.push((await import(new URL(name, dir))).default);
 	}
 }

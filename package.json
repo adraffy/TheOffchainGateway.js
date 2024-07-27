@@ -5,7 +5,7 @@
 		"@adraffy/ens-normalize": "^1.10.1",
 		"@ensdomains/address-encoder": "^1.0.0",
 		"@resolverworks/enson": "^0.0.17",
-		"@resolverworks/ezccip": "^0.0.12",
+		"@resolverworks/ezccip": "^0.0.13",
 		"ethers": "^6.13.2"
 	},
 	"scripts": {

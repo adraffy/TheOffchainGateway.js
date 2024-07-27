@@ -40,7 +40,6 @@ export async function get_ens_profile(name, testnet) {
 		if (json.primaryAddress !== ethers.ZeroAddress) {
 			record.set(60, json.primaryAddress);
 		}
-		console.log(json);
 		record.setName(json.name.slice(0, -1)); // drop trailing "."
 		Object.entries(json.text ?? {}).forEach(([k, v]) => record.set(k, v));
 		Object.entries(json.addresses ?? {}).forEach(([k, v]) => record.set(`$${k}`, v));
