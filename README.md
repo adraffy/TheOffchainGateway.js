@@ -116,5 +116,4 @@ type Context = {
 	* [Demo](https://raffy.antistupid.com/eth/offchain-tunnel.html) (view source)
 * [3DNS]
 	* [`josh.box.3dns.tog.raffy.eth`](https://adraffy.github.io/ens-normalize.js/test/resolver.html#josh.box.3dns.tog.raffy.eth)
-	* [`test-13-06-2024-1517.box.3dns-testnet.tog.raffy.eth`](https://adraffy.github.io/ens-normalize.js/test/resolver.html#test-13-06-2024-1517.box.3dns-testnet.tog.raffy.eth)
-	
+	* [`epic.com.3dns-testnet.tog.raffy.eth`](https://adraffy.github.io/ens-normalize.js/test/resolver.html#epic.com.3dns-testnet.tog.raffy.eth)

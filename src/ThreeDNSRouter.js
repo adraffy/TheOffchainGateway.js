@@ -43,10 +43,8 @@ export async function get_ens_profile(name, testnet) {
 		record.setName(json.name.slice(0, -1)); // drop trailing "."
 		Object.entries(json.text ?? {}).forEach(([k, v]) => record.set(k, v));
 		Object.entries(json.addresses ?? {}).forEach(([k, v]) => record.set(`$${k}`, v));
-		console.log(record);
 		return record;
 	} catch (err) {
-		console.log(err);
 		return new Error(`unable to resolve: ${name}: ${url}`, {cause: err});
 	}
 }
