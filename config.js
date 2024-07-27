@@ -55,18 +55,9 @@ if (is_enabled(process.env.DEMO)) {
 	ROUTERS.push((await import('./routers/xctens.js')).default);
 	ROUTERS.push((await import('./routers/ensregs.js')).default);
 	ROUTERS.push((await import('./routers/mydns.js')).default);
-}
-
-// production routers
-if (is_enabled(process.env.NAMESTONE_PROD)) {
 	ROUTERS.push((await import('./routers/cypher.js')).default);
 	ROUTERS.push((await import("./routers/teamnick.js")).default);
-	// requires postgres server
-	if (process.env.NAMESTONE_PG) {
-		let pg = (await import('./routers/namestone-pg.js')).default
-		ROUTERS.push({...pg, deploy: 'e1', slug: 'namestone-pg'});
-		ROUTERS.push({...pg, deploy: 'e0', slug: 'pg'});
-	}
+	ROUTERS.push(...(await import("./routers/3dns.js")).default);
 }
 
 // dynamically load any underscored routers
