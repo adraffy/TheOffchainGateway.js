@@ -1,7 +1,7 @@
 import {createServer, IncomingMessage, OutgoingMessage} from 'node:http';
 import {EZCCIP} from '@resolverworks/ezccip';
 import {ethers} from 'ethers';
-import {log, error_with} from './src/utils.js';
+import {log, error_with, is_address} from './src/utils.js';
 import {ROUTERS, TOR_DEPLOYS, TOR_DEPLOY0} from './config.js';
 
 IncomingMessage.prototype.read_body = async function() {
@@ -73,7 +73,7 @@ const http = createServer(async (req, reply) => {
 				let router = require_router(slug);
 				let [deploy] = drop_path_component(rest);
 				if (!deploy) deploy = router.deploy ?? TOR_DEPLOY0;
-				let resolver = TOR_DEPLOYS[deploy];
+				let resolver = is_address(deploy) ? deploy : TOR_DEPLOYS[deploy];
 				if (!resolver) throw error_with(`resolver "${deploy}" not found`, {status: 404});
 				let {sender, data: calldata} = await req.read_json();
 				let {data, history} = await ezccip.handleRead(sender, calldata, {signingKey, resolver, router, routers, ip, searchParams: url.searchParams});

@@ -58,6 +58,7 @@ if (is_enabled(process.env.DEMO)) {
 	ROUTERS.push((await import('./routers/mydns.js')).default);
 	ROUTERS.push((await import('./routers/cypher.js')).default);
 	ROUTERS.push((await import("./routers/teamnick.js")).default);
+	ROUTERS.push((await import("./routers/durin.js")).default);
 	ROUTERS.push(...(await import("./routers/3dns.js")).default);
 }
 
